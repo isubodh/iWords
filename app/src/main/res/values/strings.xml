@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">iWords</string>
+    <string name="menu2">Two Letter Words</string>
+    <string name="menu3">Three Letter Words</string>
+    <string name="previous">&lt;&lt; Previous</string>
+    <string name="next">Next &gt;&gt;</string>
+</resources>
