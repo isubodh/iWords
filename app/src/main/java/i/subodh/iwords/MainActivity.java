@@ -35,10 +35,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Log.d(TAG, "Jumbling up the list to display");
         currentWord = 0;
         Random random = new Random();
+        String temp;
         for(int i=0; i<toShow.length;i++){
             int rand = random.nextInt(toShow.length);
-            toShow[i] = toShow[rand];
-
+            temp = toShow[rand];
+            toShow[rand] = toShow[i];
+            toShow[i] = temp;
         }
         toDisplayList = Arrays.copyOf(toShow, toShow.length);
     }
@@ -50,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         if (currentWord < 0)
             currentWord = toDisplayList.length -1 ;
-
+        Log.d(TAG, "["+currentWord+"/"+toDisplayList.length+"]");
         txtWord.setText(toDisplayList[currentWord]);
     }
 
