@@ -25,6 +25,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             = {"ace","act","add","ado","age","ago","aha","aid","aim",
             "air","all","and","ant","any","ape","apt","are",
             "ark","arm","art","ask","ass","ate","axe" };
+    private static final String fourLetterWords []
+            = {"face","fact","this","that","went","goto","wild","skin","milk",
+            "Lion","fall","find","moon","many","bake","dark","cake",
+            "kick","sand","bite","bend","wind","tree","look" };
     String[] toDisplayList ;
     Button btnNext;
     Button btnPrevious;
@@ -79,7 +83,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 displayWord();
                 break;
             case R.id.btnPrevious:
-                currentWord++;
+                currentWord--;
                 displayWord();
                 break;
         }
@@ -101,6 +105,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.itmThree:
                 jumbleUp(threeLetterWords) ;
+                displayWord();
+                break;
+            case R.id.itmFour:
+                jumbleUp(fourLetterWords) ;
                 displayWord();
                 break;
         }
