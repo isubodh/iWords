@@ -33,7 +33,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button btnNext;
     Button btnPrevious;
     TextView txtWord;
-    private int currentWord = 0;
+    private int currentWord = 4;
+    DataManager dm;
 
     private void jumbleUp(String [] toShow){
         Log.d(TAG, "Jumbling up the list to display");
@@ -51,19 +52,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void displayWord(){
         Log.d(TAG, "Updating the display word");
-        if (currentWord >= toDisplayList.length)
-            currentWord = 0;
+        String word = dm.getWord(currentWord);
 
-        if (currentWord < 0)
-            currentWord = toDisplayList.length -1 ;
-        Log.d(TAG, "["+currentWord+"/"+toDisplayList.length+"]");
-        txtWord.setText(toDisplayList[currentWord]);
+        Log.d(TAG, "Returned Word is : "+ word);
+        txtWord.setText(word);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.d(TAG, "on Create now");
         super.onCreate(savedInstanceState);
+        dm = new DataManager(this);
+
         setContentView(R.layout.activity_main);
         btnNext = (Button) findViewById(R.id.btnNext);
         btnNext.setOnClickListener(this);
@@ -71,7 +71,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnPrevious.setOnClickListener(this);
         txtWord = (TextView) findViewById(R.id.txtWord);
         Log.d(TAG, "Done initializing variable");
-        jumbleUp(twoLetterWords);
+
+
+        //jumbleUp(twoLetterWords);
         displayWord();
     }
     @Override
@@ -79,11 +81,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Log.d(TAG, "Button clicked ...handling");
         switch(v.getId()){
             case R.id.btnNext:
-                currentWord++;
                 displayWord();
                 break;
             case R.id.btnPrevious:
-                currentWord--;
                 displayWord();
                 break;
         }
@@ -100,15 +100,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Log.d(TAG, "Menu clicked...handling");
         switch (item.getItemId()) {
             case R.id.itmTwo:
-                jumbleUp(twoLetterWords) ;
+                currentWord = 2;
                 displayWord();
                 break;
             case R.id.itmThree:
-                jumbleUp(threeLetterWords) ;
+                currentWord = 3;
                 displayWord();
                 break;
             case R.id.itmFour:
-                jumbleUp(fourLetterWords) ;
+                currentWord = 4;
                 displayWord();
                 break;
         }
