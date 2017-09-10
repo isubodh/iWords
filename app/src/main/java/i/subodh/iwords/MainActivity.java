@@ -16,19 +16,7 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     private static final String TAG = "iWORDs";
-    private static final String twoLetterWords []
-            = {"ah","am","an","as","at","be","by","do","go","he",
-            "hi","if","in","is","it","me","my","no","of","oh",
-            "ok","on","or","ox","so","to","up","us","we"};
 
-    private static final String threeLetterWords []
-            = {"ace","act","add","ado","age","ago","aha","aid","aim",
-            "air","all","and","ant","any","ape","apt","are",
-            "ark","arm","art","ask","ass","ate","axe" };
-    private static final String fourLetterWords []
-            = {"face","fact","this","that","went","goto","wild","skin","milk",
-            "Lion","fall","find","moon","many","bake","dark","cake",
-            "kick","sand","bite","bend","wind","tree","look" };
     String[] toDisplayList ;
     Button btnNext;
     Button btnPrevious;
