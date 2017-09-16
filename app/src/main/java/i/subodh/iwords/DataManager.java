@@ -36,7 +36,7 @@ public class DataManager  {
     INSERT a word
      */
     public void insertWord(String word){
-        String query = "INSERT into " + TB_WORDS +
+        String query = "INSERT or REPLACE into " + TB_WORDS +
                 "( " + WORDS_TC_WORD + ", " + WORDS_TC_COUNT + " ) values ( '" +
                 word + "', " + word.length() +  ");";
 
@@ -46,7 +46,7 @@ public class DataManager  {
 
     }
     /*
-       Get a radom word and just 1
+       Get a random word and just 1
         */
     public String getWord(int count){
         String query;
