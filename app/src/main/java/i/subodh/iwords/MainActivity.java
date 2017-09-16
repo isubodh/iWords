@@ -1,5 +1,6 @@
 package i.subodh.iwords;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -99,6 +100,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 currentWord = 4;
                 displayWord();
                 break;
+            case R.id.itmFive:
+                currentWord =5 ;
+                break;
+            case R.id.itmAll:
+                currentWord = 6;
+                break;
+            case R.id.itmManage:
+                Intent manage = new Intent(this, activity_manage.class);
+                startActivity(manage);
+                break;
+
         }
         return true;
     }

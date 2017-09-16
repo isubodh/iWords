@@ -45,11 +45,21 @@ public class DataManager  {
         iWordsDB.execSQL(query);
 
     }
-
+    /*
+       Get a radom word and just 1
+        */
     public String getWord(int count){
-        String query = "SELECT " + WORDS_TC_WORD + " from "+
-                TB_WORDS + " where "+ WORDS_TC_COUNT +
-                " = "+ count +" order by RANDOM() LIMIT 1;";
+        String query;
+        if (count < 6 ){
+            query = "SELECT " + WORDS_TC_WORD + " from "+
+                    TB_WORDS + " where "+ WORDS_TC_COUNT +
+                    " = "+ count +" order by RANDOM() LIMIT 1;";
+
+        }
+        else {
+            query = "SELECT " + WORDS_TC_WORD + " from "+
+                    TB_WORDS + " order by RANDOM() LIMIT 1;";
+        }
 
         Log.d(TAG,"getWord : "+ query);
 
@@ -61,6 +71,17 @@ public class DataManager  {
             return c.getString(0);
         else
             return  context.getString(R.string.noWord); //"End of iWords DB";
+    }
+    /*
+    Delete a word
+     */
+    public void deleteWord(String word){
+        String query = "DELETE from " + TB_WORDS
+                + " where "+ WORDS_TC_WORD +" = '" + word + "';";
+
+        Log.d(TAG,"deleteWord : "+ query);
+
+        iWordsDB.execSQL(query);
     }
 
     /*

@@ -3,6 +3,9 @@
     <string name="menu2">Two Letter Words</string>
     <string name="menu3">Three Letter Words</string>
     <string name="menu4">Four Letter Words</string>
+    <string name="menu5">Five Letter Words</string>
+    <string name="menuAll">All Words</string>
+    <string name="menuManage">Manage Words</string>
     <string name="previous">&lt;&lt; Previous</string>
     <string name="next">Next &gt;&gt;</string>
     <string name="noWord">Subodh .. ur iWord has limits</string>
