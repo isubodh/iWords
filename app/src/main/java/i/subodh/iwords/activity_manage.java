@@ -1,6 +1,7 @@
 package i.subodh.iwords;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,6 +23,8 @@ public class activity_manage extends AppCompatActivity implements View.OnClickLi
     Button btnDelete;
     EditText editWord;
     TextView txtAddDelete;
+    SharedPreferences myPerfs;
+    SharedPreferences.Editor myPerfEditor;
 
     private void addWord(String word){
         Log.d(TAG, "Inside the addWord call");
@@ -47,6 +50,10 @@ public class activity_manage extends AppCompatActivity implements View.OnClickLi
         editWord = (EditText) findViewById(R.id.edtWord);
         txtAddDelete = (TextView) findViewById(R.id.txtAddDelete);
         txtAddDelete.setText("To add or delete a word just type it and click the Add/Delete Button.");
+
+        //Saved Prefrences
+        myPerfs = getSharedPreferences("iWords", MODE_PRIVATE);
+        myPerfEditor = myPerfs.edit();
 
         Log.d(TAG, "Done initializing variable in Manage");
     }
@@ -85,26 +92,37 @@ Handing Menu option below
         Intent manage;
         switch (item.getItemId()) {
             case R.id.itmTwo:
+                myPerfEditor.putInt("currentWord", 2);
+                myPerfEditor.commit();
                  manage = new Intent(this, MainActivity.class);
                 startActivity(manage);
                 break;
             case R.id.itmThree:
+                myPerfEditor.putInt("currentWord", 3);
+                myPerfEditor.commit();
                  manage = new Intent(this, MainActivity.class);
                 startActivity(manage);
                 break;
             case R.id.itmFour:
+                myPerfEditor.putInt("currentWord", 4);
+                myPerfEditor.commit();
                  manage = new Intent(this, MainActivity.class);
                 startActivity(manage);
                 break;
             case R.id.itmFive:
+                myPerfEditor.putInt("currentWord", 5);
+                myPerfEditor.commit();
                  manage = new Intent(this, MainActivity.class);
                 startActivity(manage);
                 break;
             case R.id.itmAll:
+                myPerfEditor.putInt("currentWord", 6);
+                myPerfEditor.commit();
                  manage = new Intent(this, MainActivity.class);
                 startActivity(manage);
                 break;
             case R.id.itmManage:
+                Toast.makeText(this,"We are already on Manage Page",Toast.LENGTH_SHORT).show();
                 break;
 
         }

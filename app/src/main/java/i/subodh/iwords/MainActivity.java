@@ -1,6 +1,7 @@
 package i.subodh.iwords;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,6 +25,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     TextView txtWord;
     private int currentWord = 4;
     DataManager dm;
+    SharedPreferences myPerfs;
+    SharedPreferences.Editor myPerfEditor;
+
 
     private void jumbleUp(String [] toShow){
         Log.d(TAG, "Jumbling up the list to display");
@@ -59,6 +63,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnPrevious = (Button) findViewById(R.id.btnPrevious);
         btnPrevious.setOnClickListener(this);
         txtWord = (TextView) findViewById(R.id.txtWord);
+        //Saved Prefrences
+        myPerfs = getSharedPreferences("iWords", MODE_PRIVATE);
+        myPerfEditor = myPerfs.edit();
+        currentWord = myPerfs.getInt("currentWord", 4);
+
         Log.d(TAG, "Done initializing variable");
 
 
@@ -112,6 +121,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
         }
+        myPerfEditor.putInt("currentWord", currentWord);
+        myPerfEditor.commit();
+
         return true;
     }
 }
